@@ -1,26 +1,19 @@
 body {
-  background-image: url("./666.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  padding-left: 594px;
-  font-family: Arial, sans-serif;
+  background-image: url("./666.jpeg");
+  background-repeat: no-repeat;
+  font-family: cursive; 
 }
 
-/* الفورم */
 form {
   width: 350px;
 }
 
-/* الكارد */
 fieldset {
-  background: rgb(229, 226, 190);
+  background: rgba(229, 226, 190, 0.8); 
   backdrop-filter: blur(5px);
   border: none;
   border-radius: 20px;
@@ -28,27 +21,18 @@ fieldset {
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-
-body {
-  font-family: 'Inter', sans-serif;
-}
-/* العنوان */
 h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #000000;
-   font-family: 'Inter', sans-serif;
 }
 
-/* الليبل */
 label {
   display: block;
   margin-bottom: 5px;
   color: #000000;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* الانبوت */
 input {
   width: 100%;
   padding: 12px;
@@ -56,43 +40,51 @@ input {
   border: none;
   border-radius: 8px;
   outline: none;
-  color: #000000;
-  
-}
+  box-sizing: border-box; }
 
-/* الأزرار */
 .buttons {
   display: flex;
   gap: 10px;
 }
 
-input[type="submit"],
-input[type="reset"] {
+
+.login-btn {
+  color: #9b0404;
   flex: 1;
   padding: 12px;
   border-radius: 8px;
+  height: 45px;
   cursor: pointer;
   border: none;
   transition: 0.3s;
+  font-size: 14px;
+}
+input[type="reset"]{
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  height: 45px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+  font-size: 14px;
 }
 
-/* زر تسجيل */
-input[type="submit"] {
+.login-btn {
   background: #4CAF50;
-  color: white;
+  color: rgb(138, 4, 4);
 }
-
-/* زر حذف */
+input[type="submit"] {
+  background: #029f3e;
+  color: rgb(255, 255, 255);
+}
 input[type="reset"] {
   background: #f44336;
-  color: white;
+  color: rgb(255, 255, 255);
+}
+.login-btn:hover { 
+  background: #45a049; 
 }
 
-/* hover */
-input[type="submit"]:hover {
-  background: #45a049;
-}
-
-input[type="reset"]:hover {
-  background: #d32f2f;
-}
+input[type="reset"]:hover { background: #d32f2f; }
+input[type="submit"]:hover { background: #03a819; }
