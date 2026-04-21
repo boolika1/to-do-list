@@ -1,41 +1,83 @@
-// DOM Elements
+//Getting DOM elements
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 const deleteAllBtn = document.getElementById('deleteAllBtn');
 
-let tasks = [];
 
-// Hide Delete All button
+// Hide delete all button initially
 deleteAllBtn.style.display = 'none';
 
-// Load tasks from localStorage
-const savedTasks = localStorage.getItem('tasks');
-if (savedTasks) {
-    tasks = JSON.parse(savedTasks);
 
-    tasks.forEach(task => {
-        addTaskToDOM(task);
-    });
+// Add task function
+function addTask() {
+  const taskValue = taskInput.value.trim();
+  if (taskValue === '') return;
 
-    deleteAllBtn.style.display = 'block';
+  // Create li
+  const taskElement = document.createElement('li');
+
+  // ===== Checkbox =====
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+
+  // ===== Task text =====
+  const taskText = document.createElement('span');
+  taskText.innerText = taskValue;
+
+  // Checkbox event (strikethrough)
+  checkbox.addEventListener('change', function () {
+    taskText.classList.toggle('completed');
+  });
+
+  // ===== Remove button =====
+  const removeBtn = document.createElement('button');
+  removeBtn.innerText = 'Remove';
+  removeBtn.className = 'remove';
+
+  removeBtn.addEventListener('click', function () {
+    taskList.removeChild(taskElement);
+
+    // hide delete all if empty
+    if (taskList.children.length === 0) {
+      deleteAllBtn.style.display = 'none';
+    }
+  });
+
+  // ===== IMPORTANT ORDER =====
+  taskElement.appendChild(checkbox);
+  taskElement.appendChild(taskText);
+  taskElement.appendChild(removeBtn);
+
+  taskList.appendChild(taskElement);
+
+  // show delete all button
+  deleteAllBtn.style.display = 'block';
+
+  // clear input
+  taskInput.value = '';
 }
 
-// Add task to DOM
-function addTaskToDOM(taskValue) {
-    const li = document.createElement('li');
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
+// Delete all tasks
+function deleteAllTasks() {
+  if (confirm('Are you sure you want to delete all tasks?')) {
+    taskList.innerHTML = '';
+    deleteAllBtn.style.display = 'none';
+  }
+}
 
-    const span = document.createElement('span');
-    span.innerText = taskValue;
 
-const audio = new Audio("./صلي علي محمد.mp3"); 
-setInterval(function () {
-    audio.currentTime = 0;
-    audio.play();
-    }, 100_000); 
+// Events
+addTaskBtn.addEventListener('click', addTask);
+
+taskInput.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    addTask();
+  }
+});
+
+deleteAllBtn.addEventListener('click', deleteAllTasks)
    // 🎵 تشغيل الأغنية عند التشييك
     const song = new Audio("./انتهاء التاسك.mp3");
     checkbox.addEventListener('change', function () {
@@ -48,44 +90,3 @@ setInterval(function () {
             song.currentTime = 0;
         }
     });
-
-    li.appendChild(checkbox);
-    li.appendChild(span);
-    taskList.appendChild(li);
-}
-
-// Add new task
-function addTask() {
-    const value = taskInput.value.trim();
-    if (value === '') return;
-
-    tasks.push(value);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-    addTaskToDOM(value);
-
-    deleteAllBtn.style.display = 'block';
-    taskInput.value = '';
-}
-
-// Delete all tasks
-function deleteAllTasks() {
-    if (confirm('Are you sure you want to delete all tasks?')) {
-        taskList.innerHTML = '';
-        tasks = [];
-
-        localStorage.removeItem('tasks');
-        deleteAllBtn.style.display = 'none';
-    }
-}
-
-// Events
-addTaskBtn.addEventListener('click', addTask);
-
-taskInput.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-        addTask();
-    }
-});
-
-deleteAllBtn.addEventListener('click', deleteAllTasks);
