@@ -5,10 +5,34 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
-  margin: 0;
-  text-align: center;
   font-family: cursive;
-
+  text-align: center;
+}
+#nav{
+background: rgba(255, 255, 255, 0.85); /* خلفية بيضاء شبه شفافة */
+backdrop-filter: blur(8px); /* تأثير الزجاج */
+padding: 10px;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* ظل ناعم يعطي عمقاً */
+border: 1px solid rgba(255, 255, 255, 0.5);
+justify-content: space-between;
+background-color: rgba(234, 220, 176, 0.701);
+margin: 5px;
+display: flex;
+align-items: center;
+}
+div #links a{
+  color: #ffffff;
+  padding: 5px 15px;
+  text-decoration: none;
+}
+#logo{
+  padding-left: 10px;
+}
+div #links a:hover{
+  background-color: rgb(238, 233, 184);
+  border-radius: 10px;
+  scale: 110%;
 }
 
 /* ===== Title ===== */
@@ -17,26 +41,7 @@ body {
   color: #f5f5f5;
   text-shadow: 3px 3.5px 40px black;
 }
-#nav{
-background-color: rgba(234, 220, 176, 0.701);
-margin: 5px;
-padding: 10px;
-display: flex;
-justify-content: flex-start;
-font-family: cursive;
-border-radius: 10px;
-}
-div a {
-  color: #ffffff;
-  padding: 5px 15px;
-  text-decoration: none;
 
-}
-div  :hover{
-  background-color: rgb(238, 233, 184);
-  border-radius: 10px;
-  scale: 110%;
-}
 /* ===== Inputs ===== */
 input, button {
   padding: 10px;
@@ -87,7 +92,6 @@ li {
 li input[type="checkbox"] {
   cursor: pointer;
   transform: scale(1.2);
-
 }
 
 /* ===== Task text ===== */
@@ -120,7 +124,6 @@ li span {
   text-decoration: line-through;
   color: gray;
   opacity: 0.7;
-
 }
 
 /* Delete all */

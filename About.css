@@ -1,60 +1,76 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   font-family: cursive;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url(./666.jpeg);
+   background-color:bisque;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
-  background: #e9e9bbd4;
-  padding: 30px;
-  border-radius: 10px;
-  width: 400px;
- text-align: center;
-  color: rgb(0, 0, 0);
+    
+    padding: 30px;
+    border-radius: 12px;
 }
 
 h1 {
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #080808;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background: #a70313;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #01a21c;
-}
-
-a {
-  color: #ffffff;
-  text-decoration: none;
-  font-style: bold ;
-  font-size: large;
+h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #000000;
 }
 
 p {
-  margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.6;
 }
+
+ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+
+#nav{
+background: rgba(255, 255, 255, 0.85); /* خلفية بيضاء شبه شفافة */
+backdrop-filter: blur(8px); /* تأثير الزجاج */
+padding: 10px;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* ظل ناعم يعطي عمقاً */
+border: 1px solid rgba(255, 255, 255, 0.5);
+justify-content: space-between;
+background-color: rgba(234, 220, 176, 0.701);
+margin: 5px;
+display: flex;
+align-items: center;
+font-family: cursive;
+}
+div #links a{
+  color: #ffffff;
+  padding: 5px 15px;
+  text-decoration: none;
+}
+#logo{
+  padding-left: 10px;
+}
+div #links a:hover{
+  background-color: rgb(238, 233, 184);
+  border-radius: 10px;
+  scale: 110%;
+}
+
+

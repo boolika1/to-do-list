@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>To-Do List</title>
+  <title>Todolii</title>
   <link rel="stylesheet" href="./Home.css">
-<div id="nav">
-  <a href="./home.html">Home</a>
-  <a href="./about.html">About</a>
-  <a href="login.html">Login</a>
-  <a href="/Sign_up.html">Sign up</a>
   
-</div>
 </head>
 
 <body>
-
+<div id="nav">
+    <div id="logo">
+      <a href="/home.html">
+        <img src="/todolii.png" width="50px">
+      </a>
+    </div>
+    <div id="links">
+      <a href="./home.html">Home</a>
+      <a href="./about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="/Sign_up.html">Sign up</a>
+    </div>
+  </div>
   <main>
-    <h1 class="title">My To-Do List</h1>
+    <h1 class="title">To-Do List</h1>
 
     <!-- هنا بس ضفت classes عشان اعدل عليهم  -->
     <input class="input-label" type="text" id="taskInput" placeholder="Enter your task">
 
     <button class="add-button" id="addTaskBtn">Add</button>
+    
+
 
     <ul id="taskList">
       <!-- Tasks will be added here -->
     </ul>
   </main>
 
-  <!-- Button to delete all tasks [ Mahmoud ] -->
+  <!-- Button to delete all tasks  -->
   <button class="delete-button" id="deleteAllBtn">Delete All</button>
 
   <script src="./Home.js"></script>
 </body>
+
 </html>
