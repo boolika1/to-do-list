@@ -1,97 +1,99 @@
-// Getting DOM elements
-    const taskInput = document.getElementById('taskInput');
-    const addTaskBtn = document.getElementById('addTaskBtn');
-    const taskList = document.getElementById('taskList');
-    const deleteAllBtn = document.getElementById('deleteAllBtn');
+//Getting DOM elements
+const taskInput = document.getElementById('taskInput');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const taskList = document.getElementById('taskList');
+const deleteAllBtn = document.getElementById('deleteAllBtn');
 
-    let tasks = [];
-// Hide the "Delete All" button initially [Mahmoud]
-    deleteAllBtn.style.display = 'none';
+// Add task function
+function addTask() {
+    const taskValue = taskInput.value.trim();
+    if (taskValue === '') return;
 
-    //  localStorage
-    const savedTasks = localStorage.getItem('tasks');
-    if (savedTasks) {
-        tasks = JSON.parse(savedTasks);
+    // Create li
+    const taskElement = document.createElement('li');
 
-        tasks.forEach(task => {
-            addTaskToDOM(task);
-        });
+    // ===== Checkbox =====
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
 
-        deleteAllBtn.style.display = 'block';
-    }
+    // ===== Task text =====
+    const taskText = document.createElement('span');
+    taskText.innerText = taskValue;
 
-//  for Add task to the page
-    function addTaskToDOM(taskValue) {
-        const li = document.createElement('li');
-
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
+    // Checkbox event (strikethrough)
+    checkbox.addEventListener('change', function () {
+        taskText.classList.toggle('completed');
         checkbox.classList.add('task-check');
 
-        const span = document.createElement('span');
-        span.innerText = taskValue;
+    });
 
-        checkbox.addEventListener('change', function() {
-            span.classList.toggle('completed');
-        });
+    // ===== Remove button =====
+    const removeBtn = document.createElement('button');
+    removeBtn.innerText = 'Remove';
+    removeBtn.className = 'remove';
 
-        li.appendChild(checkbox);
-        li.appendChild(span);
+    removeBtn.addEventListener('click', function () {
+        taskList.removeChild(taskElement);
 
-        taskList.appendChild(li);
+        // hide delete all if empty
+        if (taskList.children.length === 0) {
+            deleteAllBtn.style.display = 'none';
+        }
+    });
+
+    // ===== IMPORTANT ORDER =====
+    taskElement.appendChild(checkbox);
+    taskElement.appendChild(taskText);
+    taskElement.appendChild(removeBtn);
+
+    taskList.appendChild(taskElement);
+
+    // show delete all button
+    deleteAllBtn.style.display = 'block';
+
+    // clear input
+    taskInput.value = '';
+}
+
+
+// Delete all tasks
+function deleteAllTasks() {
+    if (confirm('Are you sure you want to delete all tasks?')) {
+        taskList.innerHTML = '';
+        deleteAllBtn.style.display = 'none';
     }
+}
 
-// Function to add a new task
-    function addTask() {
-        const value = taskInput.value.trim();
-        if (value === '') return;
 
-        tasks.push(value);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+// Events
+addTaskBtn.addEventListener('click', addTask);
 
-        addTaskToDOM(value);
-
-        deleteAllBtn.style.display = 'block';
-        taskInput.value = '';
+taskInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        addTask();
     }
-    // إنشاء عنصر الصوت
+});
+
+deleteAllBtn.addEventListener('click', deleteAllTasks);
+
+
+
+
 const completeSound = new Audio("./انتهاء التاسك.mp3");
 const shay = new Audio("./sound.mp3");
 
-setInterval(function ps(){
-shay.currentTime = 0 ;
-shay.play();
-},60000);
+setInterval(function ps() {
+    shay.currentTime = 0;
+    shay.play();
+}, 60000);
 
-document.addEventListener("change", function(e) {
+document.addEventListener("change", function (e) {
     if (e.target.classList.contains("task-check")) {
-        
+
         if (e.target.checked) {
-        
+
             completeSound.currentTime = 0;
             completeSound.play();
         }
     }
 });
-
- //Function to delete all tasks [Mahmoud]
-    function deleteAllTasks() {
-        if (confirm('Are you sure you want to delete all tasks?')) {
-            taskList.innerHTML = '';
-            tasks = [];
-
-            localStorage.removeItem('tasks');
-            deleteAllBtn.style.display = 'none';
-        }
-    }
-
- // Add event listeners
-    addTaskBtn.addEventListener('click', addTask);
-
-    taskInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            addTask();
-        }
-    });
-//Event for delete all button [Mahmooud]
-    deleteAllBtn.addEventListener('click', deleteAllTasks);
