@@ -56,14 +56,19 @@
     }
     // إنشاء عنصر الصوت
 const completeSound = new Audio("./انتهاء التاسك.mp3");
+const shay = new Audio("./sound.mp3");
 
-// مثال: لما تضغط على التاسك (checkbox)
+setInterval(function ps(){
+shay.currentTime = 0 ;
+shay.play();
+},60000);
+
 document.addEventListener("change", function(e) {
     if (e.target.classList.contains("task-check")) {
         
         if (e.target.checked) {
-            // تشغيل الصوت
-            completeSound.currentTime = 0; // يبدأ من الأول
+        
+            completeSound.currentTime = 0;
             completeSound.play();
         }
     }
