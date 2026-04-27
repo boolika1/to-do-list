@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/"
+  to = "/signup"
+  status = 302
+  force = true
+
+# الكود ده مهم جداً لو بتستخدم React Router عشان يمنع خطأ 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
