@@ -73,17 +73,27 @@ button {
   font-family: cursive;
 }
 
-/* Input */
 .input-label {
+  width: 280px;
+  padding: 12px 15px;
+
+  border: none;
+  outline: none;
+
   border-radius: 3px;
-  border: 1.5px solid beige;
   background-color: #ffffffcc;
+
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  text-decoration: #333;
+  margin-top: 10px;
 }
 
-.input-label:hover ,:focus {
+.input-label:focus {
   background-color: #fff;
-  box-shadow: 0 0 0 3px #4CAF50, 0 4px 12px rgba(0, 0, 0, 0.15);
-} 
+  box-shadow: 0 0 0 2px #4CAF50, 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 /* Add button */
 .add-button {

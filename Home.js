@@ -80,13 +80,6 @@ deleteAllBtn.addEventListener('click', deleteAllTasks);
 
 
 const completeSound = new Audio("./انتهاء التاسك.mp3");
-const shay = new Audio("./sound.mp3");
-
-setInterval(function ps() {
-    shay.currentTime = 0;
-    shay.play();
-}, 60000);
-
 document.addEventListener("change", function (e) {
     if (e.target.classList.contains("task-check")) {
 
